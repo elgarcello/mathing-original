@@ -1,0 +1,14 @@
+<div class="row">
+  <aside class="col-xs-4">
+    <div class="user">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <img src="<%= gravatar_url(@user, { size: 250 }) %>" alt="" class="img-circle">
+        </div>
+        <div class="panel-body">
+          <p class="user-title"><%= @user.name %></p>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
