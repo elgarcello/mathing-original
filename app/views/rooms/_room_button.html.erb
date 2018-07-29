@@ -1,0 +1,14 @@
+<% unless current_user == user %>
+  <% if Room.find_by(user_id: current_user.id, guest_id: user.id) then %>
+    <% room = Room.find_by(user_id: current_user.id, guest_id: user.id) %>
+    <%= link_to 'メッセージ', room_path(room), class: 'btn btn-success' %>
+  <% elsif Room.find_by(user_id: user.id, guest_id: current_user.id) then %>
+    <% room =  Room.find_by(user_id: user.id, guest_id: current_user.id) %>
+    <%= link_to 'メッセージ', room_path(room), class: 'btn btn-success' %>
+  <% else %>
+    <%= form_for(current_user.rooms.create) do |f| %>
+      <%= hidden_field_tag :guest_id, user.id %>
+      <%= f.submit 'メッセージ', class: 'btn btn-success' %>
+    <% end %>
+  <% end %>
+<% end %>

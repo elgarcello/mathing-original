@@ -1,0 +1,12 @@
+<% comments.each do |comment| %>
+  <p><%= comment.user.name %>:<%= comment.content %></p>
+<% end %>
+
+<%= form_for(current_user.comments.create) do |f| %>
+  <%= hidden_field_tag :room_id, params[:id] %>
+  <div class="form-group">
+    <%= f.label :content, 'メッセージ' %>
+    <%= f.text_field :content, class: 'form-control' %>
+  </div>
+  <%= f.submit 'メッセージを送る', class: 'btn btn-success' %>
+<% end %>

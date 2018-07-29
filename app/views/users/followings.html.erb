@@ -21,7 +21,7 @@
         </tr>
         <tr>
           <td class="text-left">性別</td>
-          <td class="text-left"><%= @user.profile.sex %></td>
+          <td class="text-left"><%=@user.profile.sex %></td>
         </tr>
         <tr>
           <td class="text-left">ご職業</td>
@@ -43,14 +43,11 @@
     <% end %>
   </div>
 </div>
-
 <div class="row">
-  <div class="col-sm-12">
-    <ul class="nav nav-jastified nav-tabs">
-      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>マッチング済み<% end %></li>
-      <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>いいねしているユーザー<% end %></li>
-      <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>いいねされているユーザー<% end %></li>
-    </ul>
+  <ul class="nav nav-jastified nav-tabs">
+    <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>マッチング済み<% end %></li>
+    <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>いいねしてるユーザー<% end %></li>
+    <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>いいねされているユーザー<% end %></li>
+  </ul>
     <%= render 'users/users', users: @users %>
-  </div>
 </div>

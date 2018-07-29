@@ -36,21 +36,18 @@
           <td class="text-left"><%= @user.profile.comment %></td>
         </tr>
       </table>
-    <% else %> 
+    <% else %>
       <% if current_user == @user %>
         <%= link_to 'プロフィールを作成する', profile_new_user_path %>
       <% end %>
     <% end %>
   </div>
 </div>
-
 <div class="row">
-  <div class="col-sm-12">
-    <ul class="nav nav-jastified nav-tabs">
-      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>マッチング済み<% end %></li>
-      <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>いいねしているユーザー<% end %></li>
-      <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>いいねされているユーザー<% end %></li>
-    </ul>
+  <ul class="nav nav-jastified nav-tabs">
+    <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>マッチング済み<% end %></li>
+    <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>いいねしているユーザー<% end %></li>
+    <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>いいねされているユーザー<% end %></li>
+  </ul>
     <%= render 'users/users', users: @users %>
-  </div>
 </div>

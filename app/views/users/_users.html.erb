@@ -8,7 +8,15 @@
               <img src="<%= gravatar_url(user, { size: 250 }) %>" alt="" class="img-circle">
             </div>
             <div class="panel-body">
-              <p class="user-title"><%= user.name %></p>
+              <p class="user-title" align="center"><%= link_to user.name, user_path(user) %></p>
+              <% if logged_in? %>
+                <div class="buttons text-center">
+                  <%= render 'relationships/follow_button', user: user %>
+                  <% if Relationship.find_by(user_id: current_user.id, follow_id: user.id) && Relationship.find_by(user_id: user.id, follow_id: current_user.id) %>
+                    <%= render 'rooms/room_button', user: user %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

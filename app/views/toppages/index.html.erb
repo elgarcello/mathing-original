@@ -1,4 +1,25 @@
-<h1>Toppages#index</h1>
-<p>Find me in app/views/toppages/index.html.erb</p>
+<% if logged_in? %>
+  <% content_for :cover do %>
+    <div class="cover"></div>
+  <% end %>
+  <div class="text-center">
+    <h3>素敵な出会いをしよう</h3>
+  </div>
+  <%= render 'users/users', users: @users %>
+<% else %>
+  <% content_for :cover do %>
+    <div class="cover"></div>
+  <% end %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>マッチングアプリへようこそ！</h1>
+      <%= link_to '会員登録する', signup_path, class: 'btn btn-primary' %>
+      <%= link_to 'ログインする', login_path, class: 'btn btn-success' %>
+    </div>
+  </div>
 
-<%= render 'users/users', users: @users %>
+  <div class="text-center">
+    <h3>素敵な出会いをしよう</h3>
+  </div>
+  <%= render 'users/users', users: @users %>
+<% end %>
